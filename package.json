@@ -1,0 +1,17 @@
+{
+  "name": "rrcs",
+  "version": "1.0.0",
+  "description": "Nodejs module for interacting with Riedel RRCS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeremy Lommori",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "nodemon": "^1.18.11"
+  }
+}
