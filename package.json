@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Nodejs module for interacting with Riedel RRCS",
   "main": "index.js",
+  "repository": "https://github.com/jlommori/riedel_rrcs",
   "scripts": {
     "start": "nodemon --exec babel-node src/",
     "build": "npm run docs && babel src/index.js -o lib/index.js",

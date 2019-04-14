@@ -52,6 +52,8 @@ The RRCS Nodejs Server provides both a client XLM-RPC interface for making reque
 
 ```
 
+Complete API documentation here: http://jlommori.github.io/riedel_rrcs
+
 ### RRCS_Client
 
 `new RRCS_Client(ip, port)` Ip Address and Port of RRCS.
