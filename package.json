@@ -1,6 +1,6 @@
 {
   "name": "riedel_rrcs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Nodejs module for interacting with Riedel RRCS",
   "main": "index.js",
   "repository": "https://github.com/jlommori/riedel_rrcs",
