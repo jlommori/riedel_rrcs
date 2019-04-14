@@ -26,7 +26,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="RRCS_Client.html">RRCS_Client</a><ul class='methods'><li data-type='method'><a href="RRCS_Client.html#getAllActivePortClones">getAllActivePortClones</a></li><li data-type='method'><a href="RRCS_Client.html#getAllActiveXps">getAllActiveXps</a></li><li data-type='method'><a href="RRCS_Client.html#getAllIFBs">getAllIFBs</a></li><li data-type='method'><a href="RRCS_Client.html#getAllPorts">getAllPorts</a></li><li data-type='method'><a href="RRCS_Client.html#getAllTrunkPorts">getAllTrunkPorts</a></li><li data-type='method'><a href="RRCS_Client.html#getGPInputStatus">getGPInputStatus</a></li><li data-type='method'><a href="RRCS_Client.html#getGPOutputStatus">getGPOutputStatus</a></li><li data-type='method'><a href="RRCS_Client.html#getInputGain">getInputGain</a></li><li data-type='method'><a href="RRCS_Client.html#getLogicSources">getLogicSources</a></li><li data-type='method'><a href="RRCS_Client.html#getObjectProperties">getObjectProperties</a></li><li data-type='method'><a href="RRCS_Client.html#getObjects">getObjects</a></li><li data-type='method'><a href="RRCS_Client.html#getOutputGain">getOutputGain</a></li><li data-type='method'><a href="RRCS_Client.html#getState">getState</a></li><li data-type='method'><a href="RRCS_Client.html#getTrunklineActivity">getTrunklineActivity</a></li><li data-type='method'><a href="RRCS_Client.html#getTrunklineSetup">getTrunklineSetup</a></li><li data-type='method'><a href="RRCS_Client.html#getVersion">getVersion</a></li><li data-type='method'><a href="RRCS_Client.html#getXpVolume">getXpVolume</a></li><li data-type='method'><a href="RRCS_Client.html#isConnectedToArtist">isConnectedToArtist</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="global.html#event:CrosspointChange">CrosspointChange</a></li><li><a href="global.html#event:GetAlive">GetAlive</a></li><li><a href="global.html#event:LogicSourceChange">LogicSourceChange</a></li><li><a href="global.html#event:SendString">SendString</a></li><li></li><li></li></ul><h3>Global</h3><ul><li><a href="global.html#clientRequest">clientRequest</a></li><li><a href="global.html#RRCS_Server">RRCS_Server</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="RRCS_Client.html">RRCS_Client</a><ul class='methods'><li data-type='method'><a href="RRCS_Client.html#getAllActivePortClones">getAllActivePortClones</a></li><li data-type='method'><a href="RRCS_Client.html#getAllActiveXps">getAllActiveXps</a></li><li data-type='method'><a href="RRCS_Client.html#getAllIFBs">getAllIFBs</a></li><li data-type='method'><a href="RRCS_Client.html#getAllPorts">getAllPorts</a></li><li data-type='method'><a href="RRCS_Client.html#getAllTrunkPorts">getAllTrunkPorts</a></li><li data-type='method'><a href="RRCS_Client.html#getGPInputStatus">getGPInputStatus</a></li><li data-type='method'><a href="RRCS_Client.html#getGPOutputStatus">getGPOutputStatus</a></li><li data-type='method'><a href="RRCS_Client.html#getInputGain">getInputGain</a></li><li data-type='method'><a href="RRCS_Client.html#getLogicSources">getLogicSources</a></li><li data-type='method'><a href="RRCS_Client.html#getObjectProperties">getObjectProperties</a></li><li data-type='method'><a href="RRCS_Client.html#getObjects">getObjects</a></li><li data-type='method'><a href="RRCS_Client.html#getOutputGain">getOutputGain</a></li><li data-type='method'><a href="RRCS_Client.html#getState">getState</a></li><li data-type='method'><a href="RRCS_Client.html#getTrunklineActivity">getTrunklineActivity</a></li><li data-type='method'><a href="RRCS_Client.html#getTrunklineSetup">getTrunklineSetup</a></li><li data-type='method'><a href="RRCS_Client.html#getVersion">getVersion</a></li><li data-type='method'><a href="RRCS_Client.html#getXpVolume">getXpVolume</a></li><li data-type='method'><a href="RRCS_Client.html#isConnectedToArtist">isConnectedToArtist</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="global.html#event:CrosspointChange">CrosspointChange</a></li><li><a href="global.html#event:GetAlive">GetAlive</a></li><li><a href="global.html#event:gpInputChange">gpInputChange</a></li><li><a href="global.html#event:LogicSourceChange">LogicSourceChange</a></li><li><a href="global.html#event:SendString">SendString</a></li><li><a href="global.html#event:SendStringOff">SendStringOff</a></li></ul><h3>Global</h3><ul><li><a href="global.html#clientRequest">clientRequest</a></li><li><a href="global.html#RRCS_Server">RRCS_Server</a></li></ul>
 </nav>
 
 <div id="main">
@@ -115,7 +115,7 @@ let RRCS_Server = function (local, remote, cb) {
 
   /**
    * sendString notification
-   * @event SendString
+   * @event SendStringOff
    * @return {array} params: [TransKey: str, string: str]
    */
   server.on('SendStringOff', (err, params, callback) => {
@@ -125,8 +125,8 @@ let RRCS_Server = function (local, remote, cb) {
   })
 
   /**
-   * sendString notification
-   * @event SendString
+   * gpInputChange notification
+   * @event gpInputChange
    * @return {array} params: [TransKey: str, net: int, node: int, port: int, slot: int, gpio: int, state: bool]
    */
   server.on('GpInputChange', (err, params, callback) => {
@@ -731,7 +731,7 @@ export { RRCS_Client }
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 14 2019 08:44:49 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Apr 14 2019 09:43:00 GMT-0400 (Eastern Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

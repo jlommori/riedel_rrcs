@@ -72,7 +72,7 @@ let RRCS_Server = function (local, remote, cb) {
 
   /**
    * sendString notification
-   * @event SendString
+   * @event SendStringOff
    * @return {array} params: [TransKey: str, string: str]
    */
   server.on('SendStringOff', (err, params, callback) => {
@@ -82,8 +82,8 @@ let RRCS_Server = function (local, remote, cb) {
   })
 
   /**
-   * sendString notification
-   * @event SendString
+   * gpInputChange notification
+   * @event gpInputChange
    * @return {array} params: [TransKey: str, net: int, node: int, port: int, slot: int, gpio: int, state: bool]
    */
   server.on('GpInputChange', (err, params, callback) => {
