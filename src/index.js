@@ -36,7 +36,7 @@ let RRCS_Server = function (local, remote, cb) {
   })
 
   server.on('NotFound', function(method, params, callback) {
-    cb.warn(`${method} not found`, params);
+    cb.notFound(`${method} not found`, params);
   })
 
   /**
@@ -77,7 +77,7 @@ let RRCS_Server = function (local, remote, cb) {
    */
   server.on('SendStringOff', (err, params, callback) => {
     if (err) cb.error('sendStringOff error', err)
-    else cb.log('sendStringOff', params)
+    else cb.sendStringOff(params)
     callback(null, params[0])
   })
 
@@ -88,7 +88,7 @@ let RRCS_Server = function (local, remote, cb) {
    */
   server.on('GpInputChange', (err, params, callback) => {
     if (err) cb.error('sendStringOff error', err)
-    else cb.log('sendStringOff', params)
+    else cb.gpInputChange(params)
     callback(null, params[0])
   })
 
@@ -99,91 +99,158 @@ let RRCS_Server = function (local, remote, cb) {
    */
   server.on('LogicSourceChange', (err, params, callback) => {
     if (err) cb.error('logicSourceChange error', err)
-    else cb.log('logicSourceChange', params)
+    else cb.logicSourceChange(params)
     callback(null, params[0])
   })
 
-  /** LOG ALARM EVENTS **/
+  /**
+   * configuratoinChange notification
+   * @event ConfigurationChange
+   */
   server.on('ConfigurationChange', (err, params, callback) => {
     if (err) cb.error('configurationChange error', err)
-    else cb.log('configurationChange')
+    else cb.configurationChange('configurationChange')
   })
 
+  /**
+   * upstreamFailed notification
+   * @event UpstreamFailed
+   * @return {array} params: [TransKey: str, Net: int, Node: int]
+   */
   server.on('UpstreamFailed', (err, params, callback) => {
     if (err) cb.error('upstreamFailed error', err)
-    else cb.warn('upstreamFailed', params)
+    else cb.upstreamFailed('upstreamFailed', params)
     callback(null, params[0])
   })
 
+  /**
+   * upstreamFailedCleared notification
+   * @event UpstreamFailedCleared
+   * @return {array} params: [TransKey: str, Net: int, Node: int]
+   */
   server.on('UpstreamFailedCleared', (err, params, callback) => {
     if (err) cb.error('upstreamFailedCleared error', err)
-    else cb.log('upstreamFailedCleared', params)
+    else cb.upstreamFailedCleared('upstreamFailedCleared', params)
     callback(null, params[0])
   })
 
+  /**
+   * downstreamFailed notification
+   * @event DownstreamFailed
+   * @return {array} params: [TransKey: str, Net: int, Node: int]
+   */
   server.on('DownstreamFailed', (err, params, callback) => {
     if (err) cb.error('downstreamFailed error', err)
-    else cb.warn('downstreamFailed', params)
+    else cb.downstreamFailed('downstreamFailed', params)
     callback(null, params[0])
   })
 
+  /**
+   * downstreamFailedCleared notification
+   * @event DownstreamFailedCleared
+   * @return {array} params: [TransKey: str, Net: int, Node: int]
+   */
   server.on('DownstreamFailedCleared', (err, params, callback) => {
     if (err) cb.error('downstreamFailedCleared error', err)
-    else cb.log('downstreamFailedCleared', params)
+    else cb.downstreamFailedCleared('downstreamFailedCleared', params)
     callback(null, params[0])
   })
 
+  /**
+   * nodeControllerFailed notification
+   * @event NodeControllerFailed
+   * @return {array} params: [TransKey: str, Net: int, Node: int]
+   */
   server.on('NodeControllerFailed', (err, params, callback) => {
     if (err) cb.error('nodeControllerFailed error', err)
-    else cb.warn('nodeControllerFailed', params)
+    else cb.nodeControllerFailed('nodeControllerFailed', params)
     callback(null, params[0])
   })
 
+  /**
+   * nodeControllerReboot notification
+   * @event NodeControllerReboot
+   * @return {array} params: [TransKey: str, Net: int, Node: int]
+   */
   server.on('NodeControllerReboot', (err, params, callback) => {
     if (err) cb.error('nodeControllerReboot error', err)
-    else cb.warn('nodeControllerReboot', params)
+    else cb.nodeControllerReboot('nodeControllerReboot', params)
     callback(null, params[0])
   })
 
+  /**
+   * clientFailed notification
+   * @event ClientFailed
+   * @return {array} params: [TransKey: str, Net: int, Node: int, slot: Int]
+   */
   server.on('ClientFailed', (err, params, callback) => {
     if (err) cb.error('clientFailed error', err)
-    else cb.warn('clientFailed', params)
+    else cb.clientFailed('clientFailed', params)
     callback(null, params[0])
   })
 
+  /**
+   * clientFailedCleared notification
+   * @event ClientFailedCleared
+   * @return {array} params: [TransKey: str, Net: int, Node: int, slot: Int]
+   */
   server.on('ClientFailedCleared', (err, params, callback) => {
     if (err) cb.error('clientFailedCleared error', err)
-    else cb.log('clientFailedCleared', params)
+    else cb.clientFailedCleared('clientFailedCleared', params)
     callback(null, params[0])
   })
 
+  /**
+   * portInactive notification
+   * @event PortInactive
+   * @return {array} params: [TransKey: str, Net: int, Node: int, port: Int]
+   */
   server.on('PortInactive', (err, params, callback) => {
     if (err) cb.error('portInactive error', err)
-    else cb.log('portInactive', params)
+    else cb.portInactive('portInactive', params)
     callback(null, params[0])
   })
 
+  /**
+   * portActive notification
+   * @event PortActive
+   * @return {array} params: [TransKey: str, Net: int, Node: int, port: Int]
+   */
   server.on('PortActive', (err, params, callback) => {
     if (err) cb.error('portActive error', err)
-    else cb.log('portActive', params)
+    else cb.portActive('portActive', params)
     callback(null, params[0])
   })
 
+  /**
+   * connectArtistRestored notification
+   * @event ConnectArtistRestored
+   * @return {array} params: [TransKey: str, GatewayState: str]
+   */
   server.on('ConnectArtistRestored', (err, params, callback) => {
     if (err) cb.error('conectArtistRestored', err)
-    cb.log(`connectArtistRestored`, params);
+    cb.connectArtistRestored(`connectArtistRestored`, params);
     callback(null, params[0])
   })
 
+  /**
+   * connectArtistFailed notification
+   * @event ConnectArtistFailed
+   * @return {array} params: [TransKey: str, GatewayState: str]
+   */
   server.on('ConnectArtistFailed', (err, params, callback) => {
     if (err) cb.error('conectArtistFailed', err)
-    cb.log(`connectArtistFailed`, params);
+    cb.connectArtistFailed(`connectArtistFailed`, params);
     callback(null, params[0])
   })
 
+  /**
+   * gatewayShutdown notification
+   * @event GatewayShutdown
+   */
   server.on('GatewayShutdown', (err, params, callback) => {
     if (err) cb.error('gatewayShutdown', err)
-    cb.log(`gatewayShutdown`, params);
+    cb.gatewayShutdown(`gatewayShutdown`, params);
     callback(null, params[0])
   })
 }

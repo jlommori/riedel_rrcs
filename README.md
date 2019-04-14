@@ -83,28 +83,31 @@ Overview Available RRCS Client Commands
 ### RRCS_Server
 
 `new RRCS_Server(local, remote, callbacks)` IP and Port for local server and RRCS
+For each RRCS event, a callback needs to be created, as shown in the example above. The name of the key in the callback object needs to match the name of the RRCS event.
+It is recommended to also implement a `callback = { error: function() {} }` to handle any errors thrown by the events.
 
 Overview of available RRCS events:
-* GetAlive - Ping from RRCS to verify server is still active
-* CrosspointChange - XP Change in the system
-* SendString - Send String command activated
-* SendStringOff - Send String command de-activiated
-* GpInputChange - GPIO Input changed
-* LogicSourceChange - Logic Source changed
-* ConfigurationChange - Alarm of a config change
-* UpstreamFailed - Alarm of Upstream Fiber Failure
-* UpstreamFaieldCleared - Alarm of Upstream Fiber Failure cleared
-* DownstreamFailed - Alarm of Downstream Fiber Failure
-* DownstreamFailedCleared - Alarm of Downstream Fiber Failure cleared
-* NodeControllerFailed - Alarm of Node Controller Failure
-* NodeControllerReboot - Alarm of Node Controller Reboot
-* ClientFailed - Alarm of Client Card Failure
-* ClientFailedCleared - Alarm of Client Card Failure cleared
-* PortInactive - Alarm of Port becoming Inactive
-* PortActive - Alarm of Port becoming Active
-* ConnectArtistRestored - Alarm of Artist connectivity restored
-* ConnectArtistFailed - Alarm of Artist connectivity failure
-* GatewayShutdown - Alarm of RRCS Shutdown
+* getAlive - Ping from RRCS to verify server is still active
+* crosspointChange - XP Change in the system
+* sendString - Send String command activated
+* sendStringOff - Send String command de-activiated
+* gpInputChange - GPIO Input changed
+* logicSourceChange - Logic Source changed
+* configurationChange - Alarm of a config change
+* upstreamFailed - Alarm of Upstream Fiber Failure
+* upstreamFaieldCleared - Alarm of Upstream Fiber Failure cleared
+* downstreamFailed - Alarm of Downstream Fiber Failure
+* downstreamFailedCleared - Alarm of Downstream Fiber Failure cleared
+* nodeControllerFailed - Alarm of Node Controller Failure
+* nodeControllerReboot - Alarm of Node Controller Reboot
+* clientFailed - Alarm of Client Card Failure
+* clientFailedCleared - Alarm of Client Card Failure cleared
+* portInactive - Alarm of Port becoming Inactive
+* portActive - Alarm of Port becoming Active
+* connectArtistRestored - Alarm of Artist connectivity restored
+* connectArtistFailed - Alarm of Artist connectivity failure
+* gatewayShutdown - Alarm of RRCS Shutdown
+* notFound - Catch all for an RRCS Event not otherwise listed
 
 ## License
 
